@@ -3,277 +3,195 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><img src="logo.png" alt="Percy Beauty Couture Logo" style="width:150px;">title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Percy's Beauty Couture</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
-<script>
-fetch(https://sheetdb.io/api/v1/i4asmrbaqrt4l)
-  .then(res => res.json())
-  .then(data => {
-    let output = "";
-    data.forEach(item => {
-      output += `
-        <div style="border:1px solid #ccc; padding:10px; margin:10px;">
-          <img src="${item["Image URL"]}" style="width:100px;">
-          <h3>${item["Product Name"]}</h3>
-          <p>${item["Price"]}</p>
-          <p>${item["Description"]}</p>
-        </div>
-      `;
-    });
-    document.getElementById("products").innerHTML = output;
-  });
-</script>
+
     body {
-      font-family: 'Montserrat', sans-serif;
-      background: #050505;
-      color: #ffffff;
+      background: #faf7f5;
+      color: #222;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    header img {
+      width: 180px;
+      max-width: 90%;
+      margin-bottom: 15px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: #666;
+      font-size: 1rem;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #555;
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: 90%;
+    .products-section {
+      padding: 40px 20px;
       max-width: 1200px;
       margin: auto;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(0,0,0,0.95);
-      border-bottom: 1px solid rgba(212,175,55,0.2);
-      z-index: 100;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-    }
-
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2rem;
-      color: #d4af37;
-      font-weight: 700;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      font-size: 0.95rem;
-    }
-
-    .nav-links a:hover {
-      color: #d4af37;
-    }
-
-    .hero {
-      min-height: 90vh;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.7)), url('hero.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-content {
-      max-width: 600px;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-
-    .gold {
-      color: #d4af37;
-    }
-
-    .hero p {
-      margin-bottom: 30px;
-      font-size: 1.05rem;
-      color: #e7e7e7;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 28px;
-      border: 1px solid #d4af37;
-      color: #d4af37;
-      margin-right: 12px;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #d4af37;
-      color: #000;
-    }
-
-    section {
-      padding: 80px 0;
-    }
-
-    .section-title {
+    .products-section h2 {
       text-align: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
     }
 
-    .grid {
+    #products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 24px;
+      gap: 20px;
     }
 
-    .card {
-      background: #111;
-      border: 1px solid rgba(212,175,55,0.15);
+    .product-card {
+      background: white;
       border-radius: 14px;
-      padding: 24px;
-    }
-
-    .card h3 {
-      margin-bottom: 12px;
-      color: #d4af37;
-    }
-
-    .about {
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       text-align: center;
-      max-width: 800px;
-      margin: auto;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .product-card .price {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .product-card .category {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .whatsapp-btn {
+      display: inline-block;
+      margin-top: 12px;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+      font-size: 0.95rem;
     }
 
     footer {
-      border-top: 1px solid rgba(212,175,55,0.2);
-      padding: 40px 0;
       text-align: center;
-      font-size: 0.95rem;
-      color: #c9c9c9;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: 2.8rem;
-      }
-
-      .btn {
-        display: block;
-        margin-bottom: 12px;
-        text-align: center;
-      }
+      padding: 30px 20px;
+      color: #666;
     }
   </style>
 </head>
 <body>
 
+  <!-- HEADER -->
   <header>
-    <div class="container">
-      <nav>
-        <div class="logo">Percy's Beauty Couture</div>
-        <div class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#products">Products</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-    </div>
+    <!-- IMPORTANT: Make sure your image file in GitHub is named exactly: percy-logo.png -->
+    <img src="percy-logo.png" alt="Percy's Beauty Couture Logo" />
+    <h1>Percy's Beauty Couture</h1>
+    <p>Luxury Perfumes | Wigs | Beauty Essentials</p>
   </header>
 
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-content">
-        <h1>Luxury Beauty. <span class="gold">Premium Confidence.</span></h1>
-        <p>
-          Exclusive hair, signature fragrances, luxury bags, and premium beauty essentials curated for elegance and style.
-        </p>
-        <a href="#products" class="btn">Shop Collection</a>
-        <a href="https://wa.me/27840632581" class="btn">Chat on WhatsApp</a>
-      </div>
-    </div>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h2>Elevate Your Beauty Experience</h2>
+    <p>
+      Discover premium beauty products, luxury fragrances, quality wigs,
+      and stylish essentials curated for confidence and elegance.
+    </p>
   </section>
 
-  <section id="products">
-    <div class="container">
-      <h2 class="section-title">Featured Categories</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Hair Collection</h3>
-          <p>Premium wigs, bundles, frontals, and beauty essentials for every look.</p>
-        </div>
-        <div class="card">
-          <h3>Signature Fragrances</h3>
-          <p>Luxury perfumes designed for confidence, elegance, and lasting impressions.</p>
-        </div>
-        <div class="card">
-          <h3>Luxury Bags</h3>
-          <p>Statement accessories crafted for bold style and elevated fashion.</p>
-        </div>
-      </div>
-    </div>
+  <!-- PRODUCTS SECTION -->
+  <section class="products-section">
+    <h2>Our Products</h2>
+    <div id="products"></div>
   </section>
 
-  <section id="about">
-    <div class="container about">
-      <h2 class="section-title">About Percy</h2>
-      <p>
-        At Percy’s Beauty Couture, luxury is more than a product — it’s an experience.
-        We provide carefully selected beauty essentials for clients who value confidence,
-        elegance, and premium quality.
-      </p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="container">
-      <h2 class="section-title">Contact Us</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>WhatsApp</h3>
-          <p>+27 84 063 2581</p>
-        </div>
-        <div class="card">
-          <h3>Email</h3>
-          <p>percy0000@icloud.com</p>
-        </div>
-        <div class="card">
-          <h3>Social Media</h3>
-          <p>Instagram, Facebook & TikTok available for latest drops and updates.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
+  <!-- FOOTER -->
   <footer>
-    <div class="container">
-      © 2026 Percy’s Beauty Couture — Luxury Redefined.
-    </div>
+    <p>Contact us on WhatsApp for orders and enquiries</p>
   </footer>
+
+  <!-- PRODUCTS FROM GOOGLE SHEETS -->
+  <script>
+    fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
+      .then(response => response.json())
+      .then(data => {
+        let output = "";
+
+        data.forEach(item => {
+          const productName = item["Product Name"] || "Product";
+          const price = item["Price"] || "Price on request";
+          const image = item["Image URL"] || "";
+          const category = item["Category"] || "Beauty";
+          const description = item["Description"] || "";
+
+          output += `
+            <div class="product-card">
+              <img src="${image}" alt="${productName}">
+              <h3>${productName}</h3>
+              <p class="price">${price}</p>
+              <p class="category">${category}</p>
+              <p>${description}</p>
+              <a
+                class="whatsapp-btn"
+                href="https://wa.me/27840632581?text=Hi%20I%20am%20interested%20in%20${encodeURIComponent(productName)}"
+                target="_blank"
+              >
+                Order on WhatsApp
+              </a>
+            </div>
+          `;
+        });
+
+        document.getElementById("products").innerHTML = output;
+      })
+      .catch(error => {
+        document.getElementById("products").innerHTML = "<p>Products failed to load. Please check the sheet connection.</p>";
+        console.error(error);
+      });
+  </script>
 
 </body>
 </html>
