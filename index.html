@@ -75,9 +75,8 @@
   </footer>
 
   <!-- PRODUCTS FROM GOOGLE SHEETS -->
-  fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
-  .then(res => res.json())
-  .then(data => {
+  <script>
+fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
 
     let perfumes = "";
     let wigs = "";
@@ -114,20 +113,10 @@
       else if (category === "Bags") {
         bags += card;
       }
-
-    });
-
-    document.getElementById("perfumes-container").innerHTML = perfumes;
-    document.getElementById("wigs-container").innerHTML = wigs;
-    document.getElementById("bags-container").innerHTML = bags;
-
-  })
-  .catch(err => {
-    console.error(err);
-    document.getElementById("products").innerHTML =
+document.getElementById("products").innerHTML =
       "<p>Failed to load products. Check SheetDB connection.</p>";
   });
-  </script>
+</script>
   <section id="about">
     <div class="container about">
       <h2 class="section-title">About Percy</h2>
