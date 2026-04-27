@@ -75,42 +75,58 @@
   </footer>
 
   <!-- PRODUCTS FROM GOOGLE SHEETS -->
-  <script>
-    fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
-      .then(response => response.json())
-      .then(data => {
-        let output = "";
+  fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
+  .then(response => response.json())
+  .then(data => {
 
-        data.forEach(item => {
-          const productName = item["Product Name"] || "Product";
-          const price = item["Price"] || "Price on request";
-          const image = item["Image URL"] || "";
-          const category = item["Category"] || "Beauty";
-          const description = item["Description"] || "";
+    let perfumes = "";
+    let wigs = "";
+    let bags = "";
 
-          output += `
-            <div class="product-card">
-              <img src="${image}" alt="${productName}">
-              <h3>${productName}</h3>
-              <p class="price">R${price}</p>
-              <p class="category">${category}</p>
-              <p>${description}</p>
-              <a
-                class="whatsapp-btn"
-                href="https://wa.me/27840632581?text=Hi%20I%20am%20interested%20in%20${encodeURIComponent(productName)}"
-                target="_blank"
-              >
-                Order on WhatsApp
-              </a>
-            </div>
-          `;
-        });
+    data.forEach(item => {
 
-       
-      .catch(error => {
-        document.getElementById("products").innerHTML = "<p>Products failed to load. Please check the sheet connection.</p>";
-        console.error(error);
-      });
+      const productName = item["Product Name"] || "Product";
+      const price = item["Price"] || "0";
+      const image = item["Image URL"] || "";
+      const category = item["Category"] || "";
+      const description = item["Description"] || "";
+
+      const card = `
+        <div class="product-card">
+          <img src="${image}" alt="${productName}">
+          <h3>${productName}</h3>
+          <p class="price">R${price}</p>
+          <p>${description}</p>
+          <a class="whatsapp-btn"
+            href="https://wa.me/27840632581?text=Hi%20I%20am%20interested%20in%20${encodeURIComponent(productName)}"
+            target="_blank">
+            Order on WhatsApp
+          </a>
+        </div>
+      `;
+
+      if (category === "Perfumes") {
+        perfumes += card;
+      } 
+      else if (category === "Wigs") {
+        wigs += card;
+      } 
+      else if (category === "Bags") {
+        bags += card;
+      }
+
+    });
+
+    document.getElementById("perfumes-container").innerHTML = perfumes;
+    document.getElementById("wigs-container").innerHTML = wigs;
+    document.getElementById("bags-container").innerHTML = bags;
+
+  })
+  .catch(error => {
+    console.error(error);
+    document.getElementById("products").innerHTML =
+      "<p>Products failed to load. Please check the sheet connection.</p>";
+  });
   </script>
   <section id="about">
     <div class="container about">
