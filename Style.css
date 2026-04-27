@@ -219,3 +219,43 @@ footer {
   color: #d4af37;
   font-weight: 500;
   }
+.social-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Base button style */
+.social-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.2s ease;
+}
+
+/* Individual brand styles */
+.instagram {
+  background: #E1306C;
+}
+
+.facebook {
+  background: #1877F2;
+}
+
+.tiktok {
+  background: #000000;
+}
+
+.email {
+  background: #555;
+}
+
+/* Hover effect */
+.social-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+    }
