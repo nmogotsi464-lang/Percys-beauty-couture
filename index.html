@@ -77,6 +77,8 @@
   <!-- PRODUCTS FROM GOOGLE SHEETS -->
   <script>
 fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
+  .then(res => res.json())
+  .then(data => {
 
     let perfumes = "";
     let wigs = "";
@@ -104,19 +106,24 @@ fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
         </div>
       `;
 
-      if (category === "Perfumes") {
-        perfumes += card;
-      } 
-      else if (category === "Wigs") {
-        wigs += card;
-      } 
-      else if (category === "Bags") {
-        bags += card;
-      }
-document.getElementById("products").innerHTML =
+      if (category === "Perfumes") perfumes += card;
+      else if (category === "Wigs") wigs += card;
+      else if (category === "Bags") bags += card;
+
+    });
+
+    document.getElementById("perfumes-container").innerHTML = perfumes;
+    document.getElementById("wigs-container").innerHTML = wigs;
+    document.getElementById("bags-container").innerHTML = bags;
+
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("products").innerHTML =
       "<p>Failed to load products. Check SheetDB connection.</p>";
   });
 </script>
+  
   <section id="about">
     <div class="container about">
       <h2 class="section-title">About Percy</h2>
