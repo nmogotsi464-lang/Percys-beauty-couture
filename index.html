@@ -57,7 +57,69 @@
       </div>
     </div>
   </section>
+  <!-- PRODUCTS SECTION -->
+  <section class="products-section">
+    <h2>Our Products</h2>
+    <div id="products"></div>
+  </section>
 
+  <!-- FOOTER -->
+  <footer>
+    <p>Contact us on WhatsApp for orders and enquiries</p>
+  </footer>
+
+  <!-- PRODUCTS FROM GOOGLE SHEETS -->
+  <script>
+    fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
+      .then(response => response.json())
+      .then(data => {
+        let output = "";
+
+        data.forEach(item => {
+          const productName = item["Product Name"] || "Product";
+          const price = item["Price"] || "Price on request";
+          const image = item["Image URL"] || "";
+          const category = item["Category"] || "Beauty";
+          const description = item["Description"] || "";
+
+          output += `
+            <div class="product-card">
+              <img src="${image}" alt="${productName}">
+              <h3>${productName}</h3>
+              <p class="price">${price}</p>
+              <p class="category">${category}</p>
+              <p>${description}</p>
+              <a
+                class="whatsapp-btn"
+                href="https://wa.me/27840632581?text=Hi%20I%20am%20interested%20in%20${encodeURIComponent(productName)}"
+                target="_blank"
+              >
+                Order on WhatsApp
+              </a>
+            </div>
+          `;
+        });
+
+        document.getElementById("products").innerHTML = output;
+      })
+      .catch(error => {
+        document.getElementById("products").innerHTML = "<p>Products failed to load. Please check the sheet connection.</p>";
+        console.error(error);
+      });
+  </script>
+
+  <!-- SOCIAL LINKS -->
+  <section style="text-align:center; padding:30px; background:#fff; margin-top:40px;">
+    <h2>Follow Us</h2>
+    <p>
+      <a href="https://www.instagram.com/percys_beauty_couture?igsh=aDQ4NzFnYm12eDJy" target="_blank">Instagram</a> |
+      <a href="https://www.facebook.com/share/1BuzthpK7r/" target="_blank">Facebook</a> |
+      <a href="https://www.tiktok.com/@percys_beauty_couture?_r=1&_t=ZS-95pVc01dGrc" target="_blank">TikTok</a>
+    </p>
+    <p>
+      <a href="mailto:percy0000@icloud.com">Email Us</a>
+    </p>
+  </section>
   <section id="about">
     <div class="container about">
       <h2 class="section-title">About Percy</h2>
