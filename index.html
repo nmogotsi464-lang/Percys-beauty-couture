@@ -76,7 +76,7 @@
 
   <!-- PRODUCTS FROM GOOGLE SHEETS -->
   fetch("https://sheetdb.io/api/v1/i4asmrbaqrt4l")
-  .then(response => response.json())
+  .then(res => res.json())
   .then(data => {
 
     let perfumes = "";
@@ -85,20 +85,20 @@
 
     data.forEach(item => {
 
-      const productName = item["Product Name"] || "Product";
+      const name = item["Product Name"] || "Product";
       const price = item["Price"] || "0";
       const image = item["Image URL"] || "";
-      const category = item["Category"] || "";
+      const category = (item["Category"] || "").trim();
       const description = item["Description"] || "";
 
       const card = `
         <div class="product-card">
-          <img src="${image}" alt="${productName}">
-          <h3>${productName}</h3>
+          <img src="${image}" alt="${name}">
+          <h3>${name}</h3>
           <p class="price">R${price}</p>
           <p>${description}</p>
           <a class="whatsapp-btn"
-            href="https://wa.me/27840632581?text=Hi%20I%20am%20interested%20in%20${encodeURIComponent(productName)}"
+            href="https://wa.me/27840632581?text=Hi%20I'm%20interested%20in%20${encodeURIComponent(name)}"
             target="_blank">
             Order on WhatsApp
           </a>
@@ -122,10 +122,10 @@
     document.getElementById("bags-container").innerHTML = bags;
 
   })
-  .catch(error => {
-    console.error(error);
+  .catch(err => {
+    console.error(err);
     document.getElementById("products").innerHTML =
-      "<p>Products failed to load. Please check the sheet connection.</p>";
+      "<p>Failed to load products. Check SheetDB connection.</p>";
   });
   </script>
   <section id="about">
