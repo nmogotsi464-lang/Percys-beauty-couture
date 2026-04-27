@@ -106,7 +106,21 @@
           `;
         });
 
-        document.getElementById("products").innerHTML = output;
+       products.forEach(product => {
+  const category = product.category;
+
+  if (category === "Perfumes") {
+    document.getElementById("perfumes-container").innerHTML += productCard;
+  }
+
+  if (category === "Wigs") {
+    document.getElementById("wigs-container").innerHTML += productCard;
+  }
+
+  if (category === "Bags") {
+    document.getElementById("bags-container").innerHTML += productCard;
+  }
+});
       })
       .catch(error => {
         document.getElementById("products").innerHTML = "<p>Products failed to load. Please check the sheet connection.</p>";
