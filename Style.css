@@ -145,21 +145,6 @@ footer {
   color: #c9c9c9;
 }
 
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
-
-  .hero h1 {
-    font-size: 2.8rem;
-  }
-
-  .btn {
-    display: block;
-    margin-bottom: 12px;
-    text-align: center;
-  }
-/* PRODUCTS GRID */
 /* PRODUCTS SECTION */
 #products {
   padding: 30px 20px;
